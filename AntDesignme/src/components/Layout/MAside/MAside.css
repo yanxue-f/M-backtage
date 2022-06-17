@@ -1,0 +1,29 @@
+/*侧边导航 */
+.aside{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+    background-color:#ffffff;
+}
+    .aside-main-container{
+    flex:1 1 auto;
+    min-height: calc(100vh - 50px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.el-scrollbar{
+    flex: 1 0 auto;
+    height: auto;
+}
+.el-menu{
+    border:none
+
+}
+.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item,
+.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item-group__title,
+.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-sub-menu__title{
+    /* padding-right: 67px; */
+    min-width: 200px;
+}

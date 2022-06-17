@@ -1,0 +1,24 @@
+.header-menu-logo{
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    height: 45px;
+    gap: 10px;
+}
+.header-menu-logo-img a{
+    display: flex;
+    height: auto;
+    align-items: center;
+}
+.header-menu-logo-img a img{
+    width: 28px;
+    height: 28px;
+} 
+.header-menu-logo-img a h1{
+    height: 32px;
+    margin: 0 0 0 12px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    flex-shrink: 0;
+}

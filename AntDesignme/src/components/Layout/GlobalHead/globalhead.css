@@ -1,0 +1,73 @@
+.header-menu{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:10px;
+}
+.header-menu-navigation{
+    flex: 1 1 0%;
+    height: 100%;
+    overflow: hidden;
+}
+.header-menu-main{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 5px;
+}
+.header-menu-main>div{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    padding: 0 10px;
+}
+.black-head .header-menu-main>div:hover,
+.black-head .header-menu-main>div:hover *{
+    background-color: #252a3d;
+}
+.whilt-head .header-menu-main>div:hover,
+.whilt-head .header-menu-main>div:hover *{
+    background-color: #f1f2f7;
+}
+.header-menu-main>div .el-icon{
+    padding: 0 5px;
+    width: 26px;
+}
+.el-dropdown-menu__item.user-info:hover{
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.user-info-item{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:#000000;
+    padding-right: 50px;
+}
+
+.header-menu-main-user-name{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: default;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active{
+    transition: all 0.3s ease-out;
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    visibility: hidden;
+    transform: scaleX(0.5);
+}
+.user-body{
+    padding: 5px 0;
+}
+.el-dropdown {
+    color: inherit;
+}
