@@ -44,17 +44,17 @@ export default (app,Mock,upload)=>{
     let userList=[
         {
             username:'admin',
-            password:'ant.design',
+            password:'vue.login',
             role:1,
         },
         {
             username:'yanxue',
-            password:'ai123456',
+            password:'vue.login',
             role:2,
         },
         {
             username:'qwer',
-            password:'df123456',
+            password:'vue.login',
             role:10,
         }
     ]

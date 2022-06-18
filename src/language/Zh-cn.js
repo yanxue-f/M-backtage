@@ -29,8 +29,8 @@ let Zhcn={
         submit:'开始使用'
     },
     login:{
-        user:'用户名:admin or user',
-        pass:'密码:ant.design',
+        user:'用户名:admin or user or qwer',
+        pass:'密码:vue.login',
         title:'后台管理系统',
         login:'登  录',
         usererror1:'用户名规则4到16位(字母,数字,下划线,减号)',

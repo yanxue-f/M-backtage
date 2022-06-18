@@ -28,8 +28,8 @@ let en={
         submit:'Start using'
     },
     login:{
-        user:'User name :admin or user',
-        pass:'Password :ant.design',
+        user:'User name :admin or user or qwer',
+        pass:'Password :vue.login',
         title:'Background management system',
         login:'Sign in',
         usererror1:' 4 to 16 (letters, numbers, underscores, minus signs)',
