@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter,  createWebHashHistory } from 'vue-router'
 import {routers} from './routers.js'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -25,10 +25,11 @@ let routes=[
       component:() => import('../views/Lockscreen.vue'),
       meta:{title:"lockscreen",verification:true, view:false},
       hidden:true
-    }
+    },
 ]
+console.log(import.meta.env.ZMKT_HTTP_URL)
 const router = createRouter({
-  history: createWebHistory(import.meta.env.ZMKT_HTTP_URL),
+  history: createWebHashHistory(),
   routes
 })
 router.beforeEach((to,from,next)=>{

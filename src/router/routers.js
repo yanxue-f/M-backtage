@@ -1,4 +1,4 @@
-import {List,Avatar,Stamp,Star,HomeFilled,Aim,Edit,Monitor,Suitcase} from '@element-plus/icons-vue'
+import {List,Avatar,Stamp,Star,HomeFilled,Aim,Edit,Monitor,Suitcase,Menu} from '@element-plus/icons-vue'
 import { shallowRef} from 'vue'
 let routers=[
     {
@@ -38,6 +38,7 @@ let routers=[
             meta:{title:"RoleManage",verification:true, view:true},
             component:() => import('../views/RoleManagement/RoleManagement.vue'),
           },
+          
         ]
       },
       {
@@ -88,5 +89,6 @@ let routers=[
         meta:{title:"guide",verification:true, view:false},
         component:() => import('../views/Guide.vue'),
       },
+
 ]
 export {routers}

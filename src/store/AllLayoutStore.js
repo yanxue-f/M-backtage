@@ -14,8 +14,8 @@ export const allpageinfo=defineStore('allpageinfo',{
             //当前左侧aside是否存在
             hiddenmenu:true,
             //logo
-            logo:'http://localhost:4004/src/assets/Logo.svg',
-            logotitle:'Zmke Desige',
+            logo:`${location.origin}/src/assets/Logo.svg`,
+            logotitle:'Vue-admin-frame',
             //左侧隐藏菜单是否展开
             showmenu:false
         }

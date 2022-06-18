@@ -11,6 +11,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  base:'/m-backstage/',
   //第二种配合koa mock数据 代理服务器
   // server: {
   //   proxy: {

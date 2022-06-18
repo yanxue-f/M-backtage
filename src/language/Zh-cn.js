@@ -13,7 +13,8 @@ let Zhcn={
         Account:'个人页', 
         PersonalCenter:'个人中心',
         PersonalSettings:'个人设置',
-        Logout:'退出登录'
+        Logout:'退出登录',
+        
     },
     guides:{
         guide:'指南',

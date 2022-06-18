@@ -1,6 +1,4 @@
-
 export default (app,Mock,upload)=>{
-    
     let mockinfo=Mock.mock({
         "user|100":[
             {
@@ -64,7 +62,7 @@ export default (app,Mock,upload)=>{
     let i=0
     userList.forEach(item => {
         userinfos[item.username]=mockinfo.user[i]
-        userinfos[item.username].image='http://localhost:4004/src/static/asadsa.png'
+        userinfos[item.username].image=`./src/static/asadsa.png`
         i++
     });
     app.get("/Publickey/:user",async(rep,res,next) => {
