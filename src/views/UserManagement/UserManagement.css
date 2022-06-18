@@ -1,0 +1,22 @@
+.tableList-show{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.tableList-show-body{
+    height: 100%;
+    padding: 24px;
+}
+.jurisdiction-true{
+    color: green;
+}
+.jurisdiction-false{
+    color: red;
+}
+.pagination-container{
+    margin-top: 24px;
+    display: flex;
+    justify-content: center
+}

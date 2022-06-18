@@ -1,0 +1,163 @@
+.el-dialog__body{
+    padding:20px 24px;
+    border-bottom: solid 1px #dcdfe6;
+    border-top: solid 1px #dcdfe6;
+}
+.el-dialog__headerbtn:focus .el-dialog__close,
+.el-dialog__headerbtn:hover .el-dialog__close{
+    color: var(--m-text-color);
+}
+/*页头*/
+.el-dropdown-menu__item:not(.is-disabled):focus {
+    background-color: var(--m-bg-color);
+    color: var(--m-text-color);
+}
+.is-focus.el-dropdown-menu__item:not(.is-disabled){
+    background-color: var(--m-bg-color);
+    color: var(--m-text-color);
+}
+.el-tabs__item.is-active{
+    color: var(--m-text-color);
+}
+.el-tabs__item:hover{
+    color: var(--m-text-color);
+}
+/**面包屑 */
+.main-header .el-breadcrumb__inner a:hover,
+.main-header .el-breadcrumb__inner.is-link:hover{
+  color: var(--m-text-color);
+}
+/**引导页 */
+.tool-tip .introjs-tooltip-header{
+  padding: 0px 0px;
+}
+.tool-tip .introjs-skipbutton{
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  padding: 12px 15px 0px;
+}
+.tool-tip .introjs-tooltipbuttons{
+  border: none;
+}
+.tool-tip .introjs-tooltiptext{
+  padding: 15px;
+  font-size: 14px;
+}
+.tool-tip .introjs-button.introjs-hidden,
+.tool-tip .introjs-button.introjs-hidden:active,
+.tool-tip .introjs-button.introjs-hidden:focus,
+.tool-tip .introjs-button.introjs-hidden:hover{
+  color: transparent;
+}
+.tool-tip .introjs-button{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 26px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: .1s;
+  font-weight: 400;
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: transparent solid 1px;
+  padding: 6px 11px;
+  font-size: 12px;
+  border-radius: 20px;
+  text-shadow: none;
+}
+.tool-tip .introjs-button:active{
+  border: #30313357 1px solid;
+  box-shadow: 0 0 0 1px transparent inset;
+}
+.tool-tip .introjs-button:focus,
+.tool-tip .introjs-button:hover{
+  box-shadow: none;
+}
+/*左侧隐藏菜单 */
+.aside-drawer .el-drawer__body{
+    padding: 0px;
+}
+/*黑夜模式 */
+.dark-mode{
+  filter:invert(1) hue-rotate(180deg);
+}
+.dark-mode .el-header.header-body,
+.dark-mode .common-layout .el-header.header-body{
+  background-color: white;
+  color: black;
+}
+.dark-mode .el-header .header-menu-main>div:hover,
+.dark-mode .el-header .header-menu-main>div:hover *{
+  background-color: #dddddd;
+}
+.dark-mode .header-menu-logo .header-menu-logo-img{
+  color: #000000;
+}
+.dark-mode * img,
+.dark-mode * canvas{
+  filter:invert(1) hue-rotate(180deg);
+}
+/*横向菜单的主题色*/
+.el-menu--horizontal .el-menu .el-menu-item.is-active,
+.el-menu--horizontal .el-menu .el-sub-menu.is-active>.el-sub-menu__title,
+.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal .el-menu-item:not(.is-disabled):hover{
+    color: var(--m-text-color);
+    background-color:var(--m-bg-color);
+}
+.aside .el-menu--vertical .el-sub-menu>.el-sub-menu__title{
+  height: 50px;
+}
+.aside .el-sub-menu.is-active .el-sub-menu__title i{
+  color:  var(--m-text-color);
+}
+.aside .el-sub-menu__title:hover{
+  background-color: var(--m-bg-color);
+}
+/*style 中的 select*/
+.hsList-item-btn .el-select .el-input__wrapper.is-focus,
+.hsList-item-btn .el-select .el-input.is-focus .el-input__wrapper{
+    box-shadow: 0 0 0 1px var(--m-text-color) inset!important;
+}
+/*style 中的 抽屉*/
+.style-drawer  .el-drawer__body{
+  padding-right: 0;
+}
+/*顶部菜单*/
+.el-menu--horizontal.split-menu-top>.el-sub-menu.is-active .el-sub-menu__title,
+.el-menu--horizontal.split-menu-top>.el-sub-menu .el-sub-menu__title:hover{
+    color: var(--m-text-color)!important;
+    background-color:var(--m-bg-color);
+    border-bottom: 2px solid var(--m-text-color);
+}
+.el-menu--horizontal.split-menu-top>.el-sub-menu .el-sub-menu__title{
+    color: #111111!important;
+    border-bottom: 2px solid transparent;
+}
+.el-menu--horizontal.split-menu-top>.el-sub-menu .el-sub-menu__title{
+    height: 55px;
+}
+/*默认菜单*/
+.el-menu--horizontal.split-menu>.el-sub-menu .el-sub-menu__title{
+  color: #ffffff;
+  border-bottom:none;
+}
+.el-menu--horizontal.split-menu>.el-sub-menu.is-active .el-sub-menu__title,
+.el-menu--horizontal.split-menu>.el-sub-menu .el-sub-menu__title:hover{
+  color: #ffffff!important;
+  background-color:var(--m-text-color);
+  border-bottom:none;
+}
+/*限制个人中心修改头像的宽度*/
+.el-dialog.cropperimage-container{
+  max-width: 580px;
+  min-width: 350px;
+}

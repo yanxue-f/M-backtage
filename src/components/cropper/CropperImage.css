@@ -1,0 +1,102 @@
+.cropper-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.cropper-body-item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+.cropper-body-left{
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(45deg, rgb(29, 29, 29) 25%, transparent 0, transparent 75%, rgb(29, 29, 29) 25% 0),
+                      linear-gradient(45deg, rgb(29, 29, 29) 25%, transparent 0, transparent 75%, rgb(29, 29, 29) 25% 0);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+}
+.cropper-body-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cropper-body-btn button{
+    margin: 0;
+}
+/* .cropper-body-left>div{
+    background: rgba(255, 255, 255, 0.5);
+} */
+.cropper-body-right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.cropper-body-preview{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+.cropper-btn{
+    display: flex;
+    flex-direction: clo;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+}
+.file{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    height: 32px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    transition: .1s;
+    font-weight: var(--el-button-font-weight);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    padding: 8px 15px;
+    font-size: var(--el-font-size-base);
+    background-color: var(--el-color-primary);
+    border: var(--el-border);
+    border-color:var(--el-color-primary);
+    border-radius: 5px;
+    
+}
+.file-info{
+    max-width: 120px;
+    overflow: hidden;
+}
+.file:hover,
+.file:focus{
+    color: var(--el-color-white);
+    border-color: var(--el-color-primary-light-3);
+    background-color: var(--el-color-primary-light-3);
+    outline: 0;
+}
+.file:active{
+    color: var(--el-button-hover-text-color);
+    border-color: var(--el-color-primary-dark-2);
+    background-color: var(--el-color-primary-dark-2);
+    outline: 0;
+}
+.file-icon{
+    margin:  0 5px;
+}

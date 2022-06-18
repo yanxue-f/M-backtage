@@ -1,0 +1,166 @@
+.common-layout{
+    width: 100vw;
+    min-height: 100vh;
+}
+.body-container{
+    height: 100%;
+}
+/**底部展开按钮 */
+.changecoll{
+    padding: 0;
+    width:100%;
+    height:40px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 10px 22px;
+    background-color: #ffffff;
+    border-top:solid 1px #dfdfdf;
+}
+.changecoll .el-icon{
+    width:20px;
+    height:20px;
+}
+.changecoll .el-icon svg{
+    color: #000000;
+    height:20px;
+    width:20px;
+}
+.changecoll:hover .el-icon svg,
+.hiddencoll:hover .el-icon svg{
+    color: var(--m-text-color);
+}
+/**顶部按钮 */
+.hiddencoll{
+    width:30px;
+    height:40px;
+    padding: 10px 5px;
+}
+.hiddencoll .el-icon{
+    width:20px;
+    height:20px;
+}
+.hiddencoll .el-icon svg{
+    color: #ffffff;
+    height:20px;
+    width:20px;
+}
+/**头部样式 */
+.el-header.header-body{
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
+    background-color:#111111;
+    height: 55px;
+    padding: 0 15px;
+    color: #ffffff;
+    z-index: 1;
+    width: 100vw;
+}
+.header-menu-logo{
+    color: #ffffff;
+}
+/**面包屑 */
+.main-header{
+    background-color: var(--el-color-white);
+    padding: 13px 24px;
+    width: 100%;
+}
+/*内容部分 */
+.main-container{
+    overflow: visible;
+    padding: 24px;
+}
+.all-main{
+    width: 100%;
+    background-color: #f0f2f5;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    min-height: calc(100vh - 55px);
+}
+.all-main::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+}
+/*展开按钮切换动画 */
+.coll-enter-active{
+    transition: all 0.3s ease-out;
+}
+.coll-enter-from{
+    /* opacity: 0; */
+    transform:rotate(180deg);
+}
+
+.el-aside{
+    overflow: visible;
+    z-index: 2;
+}
+/**底部 */
+.el-footer{
+    padding:0 24px;
+    margin-top: 7.68vh;
+    margin-bottom: 3.84vh;
+    color: rgba(0,0,0,.5);
+    font-size: 14px;
+    background: #f0f2f5;
+}
+.footers-header{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 10px;
+}
+.footers-header a{
+    color: rgba(0,0,0,.5);
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+.footers-header a:hover,.footers-header a:active{
+    color: rgba(0,0,0,.85);
+}
+.footers-copyright{
+    text-align: center;
+}
+/*定宽*/
+.wide{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/*固定头部*/
+.header-body.fixedHeader{
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+/*固定侧边栏 */
+.el-aside.fixedAside,
+.fixedAside+.all-main{
+    height: calc(100vh - 55px);
+}
+/*分割菜单 */
+.el-menu--horizontal.split-menu{
+    background-color: #111111;
+    border: none;
+}
+.el-menu--horizontal.split-menu>.el-menu-item{
+    height: 55px;
+    margin: 0;
+    color: #ffffff;
+    background-color: #111111;
+    border-bottom:none;
+    padding:0 25px;
+}
+.el-menu--horizontal.split-menu li.el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal.split-menu li.el-menu-item:not(.is-disabled):hover,
+.el-menu--horizontal.split-menu>.el-menu-item.is-active{
+    color: #ffffff!important;
+    background-color:var(--m-text-color);
+    border-bottom:none;
+}
+
+/* ... */
+.header-menu-navigation .el-menu.el-menu--horizontal.split-menu>.el-sub-menu.is-opened .el-sub-menu__title{
+    box-shadow: none;
+    padding-bottom: 0px;
+}

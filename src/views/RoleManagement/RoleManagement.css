@@ -1,0 +1,16 @@
+.tableList-show{
+    border-radius: 2px;
+}
+.tableList-show-body{
+    background-color: #fff;
+    height: 100%;
+    padding: 24px;
+}
+.Operations{
+    display: flex;
+    justify-content: space-evenly
+}
+.Operations-btn{
+    display: flex;
+    justify-content: space-evenly
+}
