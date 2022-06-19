@@ -274,12 +274,12 @@
 
     //用于重置模板
     function ResetroleT(){
+        
         roledynamic.value.key=null;
         roledynamic.value.value=null;
         for (const key in roledynamic.value.jurisdiction) {
             roledynamic.value.jurisdiction[key]=false
         }
-        roledynamic.value.value=currentuser.value.role+1
     }
     //添冲面板数据
     function addroleinfo(info){

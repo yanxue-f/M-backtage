@@ -13,7 +13,8 @@ let en={
         Account:'Personal Page',
         PersonalCenter:'Personal Center',
         PersonalSettings:'Personal Settings',
-        Logout:'Log out'
+        Logout:'Log out',
+        menumanagement:'Menu Manage'
     },
     guides:{
         guide:'Guide',

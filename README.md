@@ -39,7 +39,7 @@ npm run dev：mock
 npm run build
 ```
 
-### 文件结构
+## 文件结构
 
 ```sh
 - .vscode
@@ -103,6 +103,8 @@ npm run build
     - Guide.vue                      (引导页)
     - kong.vue                        
     - Lockscreen.vue                 (锁屏)
+- App.vue                            (引入国际化文件，根部vue)
+- main.vue                           (引入插件生成vue实例，挂在到index.html下)
 - .env.development.local             (开发环境下的接口前缀ZMKT_HTTP_URL="")
 - .env.production.local              (生产环境下的接口前缀ZMKT_HTTP_URL="")
 - .eslintrc.cjs
@@ -115,5 +117,13 @@ npm run build
 - vite.config.js
 - README.md
 ```
+## 后端接口拦截
+
+采用expross开启服务器接口,以中间件模式创建 Vite 服务器 ,将 vite 的 connect 实例作中间件使用.
+
+* 使用multer插件用于上传文件.
+* 使用body-parser插件,将post到后端的文件挂载到body下.
+* 使用glob插件，独居mock文件获取除app.js外的所用文件(mock数据与后端模拟接口).
+* mock 下的app.js用于监控开发时文件的变化实时更新.
 
 

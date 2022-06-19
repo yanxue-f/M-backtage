@@ -14,12 +14,12 @@
     background-color:var(--m-bg-color);
 }
 .el-menu .el-sub-menu  .el-sub-menu__title{
-    height: 50px;
-    line-height: 50px;
+    height: var(--m-aside-item);
+    line-height: var(--m-aside-item);
 }
 .el-menu .el-menu-item{
-    height: 50px;
-    line-height: 50px;
+    height: var(--m-aside-item);
+    line-height: var(--m-aside-item);
 }
 .el-menu-item.is-active::after{
     position: absolute;

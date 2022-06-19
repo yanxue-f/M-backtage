@@ -38,7 +38,15 @@ let routers=[
             meta:{title:"RoleManage",verification:true, view:true},
             component:() => import('../views/RoleManagement/RoleManagement.vue'),
           },
-          
+          {
+            path:'menumanagement',
+            id:'2-3',
+            allpath:'/management/menumanagement',
+            name:'menumanagement',
+            icon:shallowRef(Menu),
+            meta:{title:"menumanagement",verification:true, view:false},
+            component:() => import('../views/MenuManage/MenuManage.vue'),
+          },
         ]
       },
       {

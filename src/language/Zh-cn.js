@@ -14,7 +14,7 @@ let Zhcn={
         PersonalCenter:'个人中心',
         PersonalSettings:'个人设置',
         Logout:'退出登录',
-        
+        menumanagement:'菜单管理'
     },
     guides:{
         guide:'指南',

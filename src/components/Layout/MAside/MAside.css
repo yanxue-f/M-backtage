@@ -9,7 +9,7 @@
 }
 .aside-main-container{
     flex:1 1 auto;
-    min-height: calc(100vh - 55px);
+    min-height: calc(100vh - var(--m-header-height));
     position: relative;
     display: flex;
     flex-direction: column;
