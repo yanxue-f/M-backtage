@@ -7,12 +7,9 @@
 
 * 前端:vue3 , element-ui , vite , vue -router , pinia；
 * 前后端交互：axios；
-* 数据模拟：mock ， express；
+* 数据模拟：mock ；
 * 其他：
-    - 文件上传：multer；
-    - 读取文件下的内容：glob；
     - 页面加载是顶部的加载进度条：nprogress；
-    - 解析中间件：body.Parse(于server.js文件下应用)；
     - 更多查看package.json文件...
 
 
@@ -29,7 +26,7 @@ npm install
 ### 开发环境编译和热重新加载以进行开发
 
 ```sh
-npm run dev：mock
+npm run dev
 ```
 在开发模式下,将 vite 的 connect 实例作中间件使用，配合express于mock进行数据模拟。(于server.js 与 mock/app.js文件下进行封装,模拟的mock数据均保存于mock文件夹下。)
 
@@ -39,15 +36,14 @@ npm run dev：mock
 npm run build
 ```
 
-### 文件结构
+## 文件结构
 
 ```sh
 - .vscode
   - extensions.json
   - settings.json
-- mock                              (除挨app.js外,均为mock数据,模拟接口)
-  - app.js                          (配合server.js建立mock数据模拟)
-  - list.js                         ('export default (app,Mock,upload)=>{}')
+- mock                              (mock数据,开发环境下拦截请求,在main.js引入)
+  - list.js                         
   - lsignMock.js
 - public
   - favicon.ico
@@ -103,6 +99,8 @@ npm run build
     - Guide.vue                      (引导页)
     - kong.vue                        
     - Lockscreen.vue                 (锁屏)
+- App.vue                            (引入国际化文件，根部vue)
+- main.vue                           (引入插件生成vue实例，挂在到index.html下)
 - .env.development.local             (开发环境下的接口前缀ZMKT_HTTP_URL="")
 - .env.production.local              (生产环境下的接口前缀ZMKT_HTTP_URL="")
 - .eslintrc.cjs
@@ -115,5 +113,10 @@ npm run build
 - vite.config.js
 - README.md
 ```
+
+## 后端接口拦截
+
+采用mockjs中的mock拦截前端向后端发送的请求，模拟数据，做到前后端分离
+
 
 
