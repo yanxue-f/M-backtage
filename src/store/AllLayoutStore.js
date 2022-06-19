@@ -15,7 +15,7 @@ export const allpageinfo=defineStore('allpageinfo',{
             hiddenmenu:true,
             //logo
             logo:`${location.origin}/src/assets/Logo.svg`,
-            logotitle:'Vue-admin-frame',
+            logotitle:'Vue-admin-F',
             //左侧隐藏菜单是否展开
             showmenu:false
         }

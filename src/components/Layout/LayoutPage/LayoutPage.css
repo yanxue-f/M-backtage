@@ -1,3 +1,7 @@
+:root{
+  --m-header-height:50px;
+  --m-aside-item:46px;
+}
 .el-dialog__body{
     padding:20px 24px;
     border-bottom: solid 1px #dcdfe6;
@@ -114,7 +118,7 @@
     background-color:var(--m-bg-color);
 }
 .aside .el-menu--vertical .el-sub-menu>.el-sub-menu__title{
-  height: 50px;
+  height: var(--m-aside-item);
 }
 .aside .el-sub-menu.is-active .el-sub-menu__title i{
   color:  var(--m-text-color);
@@ -143,7 +147,7 @@
     border-bottom: 2px solid transparent;
 }
 .el-menu--horizontal.split-menu-top>.el-sub-menu .el-sub-menu__title{
-    height: 55px;
+    height: var(--m-header-height);
 }
 /*默认菜单*/
 .el-menu--horizontal.split-menu>.el-sub-menu .el-sub-menu__title{

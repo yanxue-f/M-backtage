@@ -31,7 +31,7 @@
     align-items: center;
     box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
     background-color:#ffffff;
-    height: 55px;
+    height: var(--m-header-height);
     padding: 0 15px;
     color: #111111;
     z-index: 1;
@@ -54,7 +54,7 @@
 }
 .all-main{
     width: 100%;
-    min-height: calc(100vh - 55px);
+    min-height: calc(100vh - var(--m-header-height));
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -113,8 +113,8 @@
 }
 /**顶部菜单 */
 .header-menu-navigation .el-menu .el-menu-item{
-    height: 55px;
-    line-height: 55px;
+    height: var(--m-header-height);
+    line-height: var(--m-header-height);
     padding: 0 25px;
 }
 .header-menu-navigation .el-menu--horizontal>.el-menu-item.is-active{

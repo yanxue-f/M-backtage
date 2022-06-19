@@ -50,7 +50,7 @@
     align-items: center;
     box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
     background-color:#111111;
-    height: 55px;
+    height: var(--m-header-height);
     padding: 0 15px;
     color: #ffffff;
     z-index: 1;
@@ -76,7 +76,7 @@
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    min-height: calc(100vh - 55px);
+    min-height: calc(100vh - var(--m-header-height));
 }
 .all-main::-webkit-scrollbar {
     display: none; /* Chrome Safari */
@@ -136,7 +136,7 @@
 /*固定侧边栏 */
 .el-aside.fixedAside,
 .fixedAside+.all-main{
-    height: calc(100vh - 55px);
+    height: calc(100vh - var(--m-header-height));
 }
 /*分割菜单 */
 .el-menu--horizontal.split-menu{
@@ -144,7 +144,7 @@
     border: none;
 }
 .el-menu--horizontal.split-menu>.el-menu-item{
-    height: 55px;
+    height: var(--m-header-height);
     margin: 0;
     color: #ffffff;
     background-color: #111111;

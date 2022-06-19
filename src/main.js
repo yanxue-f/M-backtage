@@ -21,9 +21,8 @@ import  HeaderLogo  from "./components/Layout/HeaderLogo/HeaderLogo.vue";
 import  GlobalHead  from "./components/Layout/GlobalHead/GlobalHead.vue";
 //封装菜单item
 import  ListUnit  from './components/Layout/ListUnit/ListUnit.vue'
-
-
-
+import '../mock/signMock.js'
+import '../mock/list.js'
 
 const app = createApp(App)
 app.use(router)

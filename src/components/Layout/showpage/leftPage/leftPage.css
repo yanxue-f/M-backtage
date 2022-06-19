@@ -51,7 +51,7 @@
     align-items: center;
     box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
     background-color:#ffffff;
-    height: 55px;
+    height: var(--m-header-height);
     padding: 0 15px;
     color: #111111;
     z-index: 1;
@@ -75,7 +75,7 @@
     scrollbar-width: none;
 }
 .all-main{
-    min-height: calc(100vh - 55px);
+    min-height: calc(100vh - var(--m-header-height));
 }
 .all-body::-webkit-scrollbar {
     display: none; /* Chrome Safari */
@@ -136,7 +136,7 @@
     height: 100vh;
 }
 .el-aside .aside .aside-main-container{
-    height: calc(100% - 55px);
+    height: calc(100% - var(--m-header-height));
 }
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
 .el-menu--horizontal .el-menu-item:not(.is-disabled):hover{
@@ -146,7 +146,7 @@
 
 /**菜单logo */
 .aside .header-menu-logo-img{
-    height: 55px;
+    height: var(--m-header-height);
     display: flex;
     align-items: center;
     color: var(--m-text-color);
