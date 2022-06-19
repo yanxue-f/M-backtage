@@ -109,7 +109,6 @@ npm run build
 - index.html
 - package-lock.json
 - package.json
-- server.js                          (以中间件模式创建 Vite 服务器mock数据)
 - vite.config.js
 - README.md
 ```
