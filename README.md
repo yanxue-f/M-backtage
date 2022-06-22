@@ -252,7 +252,7 @@ let routes=[
 ## 静态文件
  保存于/src/static/下
 
-## store装台管理
+## store状态管理
 
 所有视图组件需要用的状态管理（pinia）：
  * AllLayoutStore.js：页面布局状态控制；
