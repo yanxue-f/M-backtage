@@ -48,7 +48,7 @@ export const SigninStore = defineStore('Signin', {
                         if(data.success=== true){
                             localStorage.setItem('token',data.result.token)
                             localStorage.setItem('user',username)
-                            localStorage.setItem('jurisdiction',JSON.stringify(data.result.jurisdiction))
+                            localStorage.setItem('jurisdiction', data.result.jurisdiction)
                             this.passwordForm.name=null;
                             this.passwordForm.password=null
                             router.push({

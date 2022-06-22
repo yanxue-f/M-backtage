@@ -8,15 +8,15 @@
                     <template #header>
                         <div class="Operations">
                             <div>{{language.userRole.operation}}</div>
-                            <el-button type="primary" size="small" @click="openAddrole=true">
+                            <el-button type="primary" size="small" @click="openAddrole=true" :disabled="administer.disabledadd">
                                 {{language.roleoperation.addrole}}<el-icon class="el-icon--right"><Plus /></el-icon>
                             </el-button>
                         </div> 
                     </template>
                     <template #default="scope">
                         <div class="Operations-btn">
-                            <el-button size="small" type="primary" @click="handleEdit(scope.row)" :disabled="!(roleList[currentuser.role].edit && (currentuser.role-scope.row.value)<0 || roleList[currentuser.role].all)">{{language.operation.edit}}</el-button>
-                            <el-button size="small" type="danger" @click="handleDelete(scope.row)" :disabled="!(roleList[currentuser.role].delete && (currentuser.role-scope.row.value)<0 || roleList[currentuser.role].all)">{{language.operation.delete}}</el-button>
+                            <el-button size="small" type="primary" @click="handleEdit(scope.row)" :disabled="administer.disablededit(scope.row.value)">{{language.operation.edit}}</el-button>
+                            <el-button size="small" type="danger" @click="handleDelete(scope.row)" :disabled="administer.disableddelete(scope.row.value)">{{language.operation.delete}}</el-button>
                         </div>
                     </template>
                 </el-table-column>
@@ -33,16 +33,15 @@
                         </el-tooltip>
                     </el-form-item>
                     <el-form-item  :label="language.roleoperation.rolejur">
-                        <div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.all" :indeterminate="checkedcenter" @change="CheckAllChange" :disabled="!roleList[currentuser.role].all">{{language.userRole.All}}</el-checkbox>
-                            </div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.manageall" @change="CheckChange" :disabled="!roleList[currentuser.role].manageall">{{language.userRole.Manageall}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.view" @change="CheckChange" :disabled="!roleList[currentuser.role].view">{{language.userRole.View}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.edit" @change="CheckChange" :disabled="!roleList[currentuser.role].edit">{{language.userRole.Edit}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.delete" @change="CheckChange" :disabled="!roleList[currentuser.role].delete">{{language.userRole.Delete}}</el-checkbox>
-                            </div>
+                        <div class="jurisdiction-container">
+                            <el-tree
+                                ref='addtree'
+                                :data="roleList"
+                                show-checkbox
+                                node-key="id"
+                                :default-checked-keys="[]"
+                                :props="defaultProps"
+                            />
                         </div>
                     </el-form-item>
                 </el-form>
@@ -66,23 +65,22 @@
                         </el-tooltip>
                     </el-form-item>
                     <el-form-item  :label="language.roleoperation.rolejur">
-                        <div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.all" :indeterminate="checkedcenter" @change="CheckAllChange" :disabled="!roleList[currentuser.role].all">{{language.userRole.All}}</el-checkbox>
-                            </div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.manageall" @change="CheckChange" :disabled="!roleList[currentuser.role].manageall">{{language.userRole.Manageall}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.view" @change="CheckChange" :disabled="!roleList[currentuser.role].view">{{language.userRole.View}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.edit" @change="CheckChange" :disabled="!roleList[currentuser.role].edit">{{language.userRole.Edit}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.delete" @change="CheckChange" :disabled="!roleList[currentuser.role].delete">{{language.userRole.Delete}}</el-checkbox>
-                            </div>
+                        <div class="jurisdiction-container">
+                            <el-tree
+                                ref='edittree'
+                                :data="roleList"
+                                show-checkbox
+                                node-key="id"
+                                :default-checked-keys="RoleJurisdiction[rolerow]"
+                                :props="defaultProps"
+                            />
                         </div>
                     </el-form-item>
                 </el-form>
                 <template #footer>
                     <div style="margin-right: 15px">
                         <el-button @click="Cancelediting">{{language.operation.cancel}}</el-button>
-                        <el-button type="primary" @click="oktoedit" :disabled="!Edited(oldrolevalue)">{{language.operation.confirm}}</el-button>
+                        <el-button type="primary" @click="oktoedit" :disabled='!Edited(oldrolevalue)'>{{language.operation.confirm}}</el-button>
                     </div>
                 </template>
             </el-dialog>
@@ -98,16 +96,15 @@
                         </el-tooltip>
                     </el-form-item>
                     <el-form-item  :label="language.roleoperation.rolejur">
-                        <div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.all" :indeterminate="checkedcenter" @change="CheckAllChange" :disabled="!roleList[currentuser.role].all">{{language.userRole.All}}</el-checkbox>
-                            </div>
-                            <div>
-                                <el-checkbox v-model="roledynamic.jurisdiction.manageall" @change="CheckChange" :disabled="!roleList[currentuser.role].manageall">{{language.userRole.Manageall}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.view" @change="CheckChange" :disabled="!roleList[currentuser.role].view">{{language.userRole.View}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.edit" @change="CheckChange" :disabled="!roleList[currentuser.role].edit">{{language.userRole.Edit}}</el-checkbox>
-                                <el-checkbox v-model="roledynamic.jurisdiction.delete" @change="CheckChange" :disabled="!roleList[currentuser.role].delete">{{language.userRole.Delete}}</el-checkbox>
-                            </div>
+                        <div class="jurisdiction-container">
+                            <el-tree
+
+                                :data="roleList"
+                                show-checkbox
+                                node-key="id"
+                                :default-checked-keys="RoleJurisdiction[rolerow]"
+                                :props="defaultProps"
+                            />
                         </div>
                     </el-form-item>
                 </el-form>
@@ -130,7 +127,6 @@
     // 国际化
     let language=inject('language')
 
-    let userpower=JSON.parse(localStorage.getItem('jurisdiction'))
     let currentusername=localStorage.getItem('user')
 
     //配置管理角色界面
@@ -141,17 +137,32 @@
     onBeforeMount(()=>{
         initialization(currentusername)
     })
-    /**
-     * 角色列表
+    /**角色权限模板
+     * 角色列表(权限)
      * 当前用户
      * 角色模板动态
      * 角色名映射
      * 角色名-值
      * 新建校色名和值是否存在
      * 判断是否已编辑权限
+     * 添加角色是的对象
+     * 编辑角色的对象
+     * 删除角色对象
      */
-    let {roleList,currentuser,roledynamic,rolename,rolekeyvalue,roleruleok,Edited}=storeToRefs(administer)
-
+    let {roleList , RoleJurisdiction , currentuser , roledynamic , rolename , rolekeyvalue , roleruleok , Edited , addtree , edittree,deletetree}=storeToRefs(administer)
+    const defaultProps = ref({
+        children: 'children',
+        label: (data,node)=> language.value.router[data.label],
+        disabled: (data,node)=>{
+            if(!data.children){
+                return !RoleJurisdiction.value[currentuser.value.role].includes(data.id)
+            }else{
+                return false
+            }
+            
+        }
+    })
+    let rolerow=ref()
     //判断添加角色时是否符合规则
     let rolenameok=ref(false)
     let rolevalueok=ref(false)
@@ -184,47 +195,21 @@
         key:  [{ required: true, message: 'Please input the Rolename', trigger: 'blur' },{ validator: validatekey, trigger: 'blur' }],
         value: [{ required: true, message: 'Please input the Rolevalue', trigger: 'blur' },{ validator: validatevalue, trigger: 'change' }]
     })
-    //权限选择时的半选状态
-    const checkedcenter=ref(false)
-    //选择all权限
-    function CheckAllChange(value){
-        for (let item in roledynamic.value.jurisdiction) {
-            roledynamic.value.jurisdiction[item]=value
-        }
-        checkedcenter.value=false
-    }
-    //选择其他权限
-     function CheckChange(){
-        checkedcenter.value = false
-        let isall=true
-        for (let key in roledynamic.value.jurisdiction) {
-            if(key!=='all'){
-                if(roledynamic.value.jurisdiction[key]===true){
-                    checkedcenter.value = true
-                }else{
-                    isall=false
-                }
-            }
-        }
-        if(isall===true){
-            checkedcenter.value = false
-            roledynamic.value.jurisdiction.all=true
-        }else{
-            roledynamic.value.jurisdiction.all=false
-        }
-    }
+   
+
      //打开角色添加模板
     let openAddrole=ref(false)
     //取消添加
     function CancelAdd(){
         openAddrole.value=false
-        ResetroleT()
+        addtree.value.setCheckedNodes([])
     }
     let addRole=administer.addRole
     //确认添加
     function oktoadd(){
         openAddrole.value=false
         addRole()
+        addtree.value.setCheckedNodes([])
     }
 
     //打开编辑面板
@@ -240,17 +225,14 @@
     //取消编辑
     function Cancelediting(){
         openEditrole.value=false
-        ResetroleT()
+        edittree.value.setCheckedNodes(RoleJurisdiction.value[rolerow.value])
     }
     let editrole=administer.editrole
     //确认编辑
     function oktoedit(){
         openEditrole.value=false
         editrole(oldrolevalue.value)
-        setTimeout(() => {
-            userpower=JSON.parse(localStorage.getItem('jurisdiction'))
-            console.log(userpower,currentusername);
-        }, 0);
+        edittree.value.setCheckedNodes(RoleJurisdiction.value[rolerow.value])
     }
 
     //打开删除面板
@@ -259,34 +241,26 @@
     function handleDelete(info){
         addroleinfo(info)
         opendeleterole.value=true
+        
     }
     //取消删除
     function Canceldelete(){
         opendeleterole.value=false
-        ResetroleT()
+        deletetree.value.setCheckedNodes(RoleJurisdiction.value[rolerow.value])
     }
     let deleterole=administer.deleterole
     //确认删除
     function oktodelete(){
         opendeleterole.value=false
         deleterole()
+        deletetree.value.setCheckedNodes(RoleJurisdiction.value[rolerow.value])
     }
 
-    //用于重置模板
-    function ResetroleT(){
-        roledynamic.value.key=null;
-        roledynamic.value.value=null;
-        for (const key in roledynamic.value.jurisdiction) {
-            roledynamic.value.jurisdiction[key]=false
-        }
-    }
     //添冲面板数据
     function addroleinfo(info){
         roledynamic.value.key=info.key;
         roledynamic.value.value=info.value;
-        for (const key in roledynamic.value.jurisdiction) {
-            roledynamic.value.jurisdiction[key]=roleList.value[info.value][key]
-        }
+        rolerow.value=info.value
     }
 </script>
 <style scoped>

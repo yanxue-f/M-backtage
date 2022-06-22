@@ -17,7 +17,12 @@ export const allpageinfo=defineStore('allpageinfo',{
             logo:`${location.origin}/src/assets/Logo.svg`,
             logotitle:'Vue-admin-F',
             //左侧隐藏菜单是否展开
-            showmenu:false
+            showmenu:false,
+            //footer
+            gitee:'https://gitee.com/fan-aoqiang/m-backstage',
+            github:'https://github.com/yanxue-f/Vue-admin-frame.git',
+            //锁屏事件
+            LockScreen:30 * 60 * 1000
         }
     },
     getters:{

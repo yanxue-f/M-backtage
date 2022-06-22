@@ -305,7 +305,6 @@
     }
     //提交文件
     async function submitimage(){
-        console.log(reader);
         let newimage = newpaper.value.toDataURL()
         let imgdata = new FormData()
         // Downloadtolocal(newimage,'newpersonal')

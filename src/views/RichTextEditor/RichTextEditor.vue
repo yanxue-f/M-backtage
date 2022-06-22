@@ -18,7 +18,6 @@ import { inject,ref} from "vue";
 // 国际化
 let language=inject('language')
 /**获取当前用户名和权限 */
-let userpower=JSON.parse(localStorage.getItem('jurisdiction'))
 let currentusername=localStorage.getItem('user')
 let asd= ref('')
 </script>

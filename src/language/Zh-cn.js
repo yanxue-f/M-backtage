@@ -14,7 +14,11 @@ let Zhcn={
         PersonalCenter:'个人中心',
         PersonalSettings:'个人设置',
         Logout:'退出登录',
-        menumanagement:'菜单管理'
+        menumanagement:'菜单管理',
+        add:'添加',
+        delete:'删除',
+        change:'修改',
+        view:'查看',
     },
     guides:{
         guide:'指南',
@@ -41,8 +45,7 @@ let Zhcn={
     userRole:{
         Role:'角色',
         Name:'用户名',
-        Jurisdiction:'权限',
-        All:'全部权力',
+        Jurisdiction:'权限等级',
         Manageall:'管理全部角色权',
         View:'查看权',
         Edit:'编辑权',

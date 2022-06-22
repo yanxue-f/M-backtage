@@ -13,28 +13,77 @@ let mockinfo=Mock.mock({
     ]
 })
 let RoleJurisdiction={
-    1:{
-        all:true,
-        manageall:true,
-        edit:true,
-        delete:true,
-        view:true,
-    },
-    2:{
-        all:false,
-        manageall:false,
-        view:true,
-        edit:true,
-        delete:true,
-    },
-    10:{
-        all:false,
-        manageall:false,
-        edit:false,
-        delete:false,
-        view:false,
-    }
+    1:['User','UserA','UserD','UserC','UserV','Role','RoleA','RoleD','RoleC','RoleV','Menu','MenuA','MenuD','MenuC','MenuV'],
+    2:['User','UserA','UserD','UserC','UserV','RoleV','Menu','MenuA','MenuD','MenuC','MenuV'],
+    10:['UserV','RoleV','MenuV'],
 }
+let RoleJurisdictiontem=[{
+            id: 'User',
+            label: 'UserManage',
+            children: [
+                {
+                    id:'UserA',
+                    label:'add',
+                },
+                {
+                    id:'UserD',
+                    label:'delete',
+                },
+                {
+                    id:'UserC',
+                    label:'change',
+                },
+                {
+                    id:'UserV',
+                    label:'view',
+                },
+            ],
+        },
+        {
+            id: 'Role',
+            label: 'RoleManage',
+            children: [
+                {
+                    id:'RoleA',
+                    label:'add',
+                },
+                {
+                    id:'RoleD',
+                    label:'delete',
+                },
+                {
+                    id:'RoleC',
+                    label:'change',
+                },
+                {
+                    id:'RoleV',
+                    label:'view',
+                },
+            ],
+        },
+        {
+            id: 'Menu',
+            label: 'menumanagement',
+            children: [
+                {
+                    id:'MenuA',
+                    label:'add',
+                },
+                {
+                    id:'MenuD',
+                    label:'delete',
+                },
+                {
+                    id:'MenuC',
+                    label:'change',
+                },
+                {
+                    id:'MenuV',
+                    label:'view',
+                },
+            ],
+        },
+    ]
 let rolename=[[1,'Boss'],[2,"ViceBoss"],[10,'Staff']]
 let usertemplate={
     username:null,
@@ -62,10 +111,9 @@ let userinfos={}
 let i=0
 userList.forEach(item => {
     userinfos[item.username]=mockinfo.user[i]
-    userinfos[item.username].image=`./src/static/asadsa.png`
+    userinfos[item.username].image=`../src/static/asadsa.png`
     i++
 });
-console.log();
 Mock.mock(RegExp('/Publickey' + ".*"), {
     code:200,
     success:true,
@@ -207,15 +255,10 @@ Mock.mock(RegExp('/role/info' + ".*"),function (options){
         return {
             code:200,
             success:true,
-            rolelist:RoleJurisdiction,
+            rolelist:RoleJurisdictiontem,
             current:currentuser,
             rolename:rolename,
-            role:{
-                all:false,
-                manageall:false,
-                edit:false,
-                delete:false,
-                view:false,}
+            RoleJurisdiction:RoleJurisdiction
         }
     }else{
         return {
@@ -237,7 +280,7 @@ Mock.mock("/role/add",'post', function (options){
     return {
         code:200,
         success:true,
-        rolelist:RoleJurisdiction,
+        RoleJurisdiction:RoleJurisdiction,
         rolename:rolename,
     }
     
@@ -269,7 +312,7 @@ Mock.mock("/role/edit",'post', function (options){
     return {
         code:200,
         success:true,
-        rolelist:RoleJurisdiction,
+        RoleJurisdiction:RoleJurisdiction,
         rolename:rolename,
         currentuser:currentuser
     }
@@ -291,7 +334,7 @@ Mock.mock("/role/delete",'post', function (options){
     return {
         code:200,
         success:true,
-        rolelist:RoleJurisdiction,
+        RoleJurisdiction:RoleJurisdiction,
         rolename:rolename
     }
     

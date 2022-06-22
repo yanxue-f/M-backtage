@@ -19,14 +19,17 @@
                     </template>
                     <template #splitmenu  v-if="hiddenmenu && Splitmenu">
                         <el-menu  class="split-menu"  :default-active="nowrouter"  mode="horizontal"  router  unique-opened  ellipsis>
-                            <el-menu-item  :index="router.allpath"  :router='router'  v-for="router in routers"  :key="router.id"  :class="{'is-active':router.allpath===nowrouter}">
-                                <template #title>
-                                    <el-icon  v-if="router.icon">
-                                        <component  :is="router.icon"></component>
-                                    </el-icon>
-                                    <span>{{language.router[router.meta.title]}}</span>
-                                </template>
-                            </el-menu-item>
+                            <template v-for="router in routers">
+                                <el-menu-item  :index="router.allpath"  :router='router' v-if="router.meta.hidden!==true"   :key="router.id"  :class="{'is-active':router.allpath===nowrouter}">
+                                    <template #title>
+                                        <el-icon  v-if="router.icon">
+                                            <component  :is="router.icon"></component>
+                                        </el-icon>
+                                        <span>{{language.router[router.meta.title]}}</span>
+                                    </template>
+                                </el-menu-item>
+                            </template>
+                            
                         </el-menu>
                     </template>
                 </global-head>
@@ -59,9 +62,9 @@
                     </el-main>
                     <el-footer  height="auto">
                         <div  class="footers-header">
-                            <a  title="Ant Design Pro"  target="_blank"  href="https://pro.ant.design"  rel="noreferrer">Ant Design Pro</a>
-                            <a  title="github"  target="_blank"  href="https://github.com/ant-design/ant-design-pro"  rel="noreferrer">GitHub</a>
-                            <a  title="Ant design"  target="_blank"  href="https://ant.design/"  rel="noreferrer">Ant design</a>
+                            <a  title="gitee"  target="_blank"  :href="gitee"  rel="noreferrer">Gitee</a>
+                            <a  title="github"  target="_blank"  :href="github"  rel="noreferrer">GitHub</a>
+                            <a  title="vue"  target="_blank"  href="https://v3.cn.vuejs.org/"  rel="noreferrer">Vue3</a>
                         </div>
                         <div  class="footers-copyright">2021 {{language.footer.practice}}</div>
                     </el-footer>  
@@ -94,8 +97,10 @@
      * 当前左侧aside是否存在
      * logo与logotitle
      * 左侧隐藏菜单
+     * footer gitee
+     * footer github
      */
-    let { routers , nowrouter , iscollapse , nowcrumbsarr , hiddenmenu , logo , logotitle , showmenu} = storeToRefs(nowinfo)
+    let { routers , nowrouter , iscollapse , nowcrumbsarr , hiddenmenu , logo , logotitle , showmenu , gitee , github} = storeToRefs(nowinfo)
     //点击折叠按钮
     let changecollapse = nowinfo.changecollapse
     //展开左侧隐藏菜单

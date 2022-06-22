@@ -14,8 +14,7 @@
 import { inject } from "vue";
 // 国际化
 let language = inject('language')
-/**获取当前用户名和权限 */
-let userpower = JSON.parse(localStorage.getItem('jurisdiction'))
+/**获取当前用户名 */
 let currentusername = localStorage.getItem('user')
 let startguide = inject('guide')
 </script>

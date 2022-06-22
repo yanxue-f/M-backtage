@@ -71,7 +71,6 @@ export const tablelist = defineStore('querytable', {
                 this.currentList=currentinfo.data.alllist
                 this.allocation=currentinfo.data.onlyrule
                 Reset=currentinfo.data.onlyrule
-                console.log(currentinfo.data);
             }
             
         },

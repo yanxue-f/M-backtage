@@ -1,13 +1,24 @@
 import {List,Avatar,Stamp,Star,HomeFilled,Aim,Edit,Monitor,Suitcase,Menu} from '@element-plus/icons-vue'
-import { shallowRef} from 'vue'
+import { shallowRef } from 'vue'
+let nowjurisdiction=localStorage.getItem('jurisdiction')
+// console.log(nowjurisdiction);
+function ishidden(arr){
+  let ok=true
+  for (const key in arr) {
+    if(nowjurisdiction.includes(arr[key])){
+        ok=false
+    }
+  }
+  return ok
+}
 let routers=[
     {
         path: 'homepage',
-        id:'1',
+        id:'1', 
         name: 'homepage',
         allpath:'/homepage',
         icon:shallowRef(HomeFilled),
-        meta:{title:"HomePage",verification:true, view:false},
+        meta:{title:"HomePage",verification:true},
         component: () => import('../views/Analysis.vue'),
       },
       {
@@ -17,8 +28,9 @@ let routers=[
         allpath:'/management',
         icon:shallowRef(Monitor),
         redirect:"/management/user",
-        meta:{title:"Management",verification:true, view:false},
+        meta:{title:"Management",verification:true,hidden:ishidden(['UserV','RoleV','MenuV']),},
         component: () => import('../views/kong.vue'),
+       
         children:[
           {
             path:'user',
@@ -26,8 +38,9 @@ let routers=[
             allpath:'/management/user',
             name:'user',
             icon:shallowRef(Avatar),
-            meta:{title:"UserManage",verification:true, view:false},
+            meta:{title:"UserManage",verification:true,hidden:ishidden(['UserV']),},
             component:() => import('../views/UserManagement/UserManagement.vue'),
+            
           },
           {
             path:'role',
@@ -35,8 +48,9 @@ let routers=[
             allpath:'/management/role',
             name:'role',
             icon:shallowRef(Stamp),
-            meta:{title:"RoleManage",verification:true, view:true},
+            meta:{title:"RoleManage",verification:true,hidden:ishidden(['RoleV'])},
             component:() => import('../views/RoleManagement/RoleManagement.vue'),
+            
           },
           {
             path:'menumanagement',
@@ -44,8 +58,9 @@ let routers=[
             allpath:'/management/menumanagement',
             name:'menumanagement',
             icon:shallowRef(Menu),
-            meta:{title:"menumanagement",verification:true, view:false},
+            meta:{title:"menumanagement",verification:true,hidden:ishidden(['MenuV'])},
             component:() => import('../views/MenuManage/MenuManage.vue'),
+            
           },
         ]
       },
@@ -56,7 +71,7 @@ let routers=[
         allpath:'/systemtools',
         icon:shallowRef(Suitcase),
         redirect:"/systemtools/editor",
-        meta:{title:"Systemtools",verification:true, view:false},
+        meta:{title:"Systemtools",verification:true},
         component: () => import('../views/kong.vue'),
         children:[
           {
@@ -65,7 +80,7 @@ let routers=[
             id:'3-1',
             name:'editor',
             icon:shallowRef(Edit),
-            meta:{title:"editor",verification:true, view:false},
+            meta:{title:"editor",verification:true},
             component:() => import('../views/RichTextEditor/RichTextEditor.vue'),
           },
         ]
@@ -76,7 +91,7 @@ let routers=[
         name: 'list',
         icon:shallowRef(List),
         allpath:'/list',
-        meta:{title:"QueryList",verification:true, view:false},
+        meta:{title:"QueryList",verification:true},
         component: () => import('../views/TableList/TableList.vue'),
       },
       {
@@ -85,7 +100,7 @@ let routers=[
         allpath:'/account',
         name:'account',
         icon:shallowRef(Star),
-        meta:{title:"PersonalCenter",verification:true, view:false},
+        meta:{title:"PersonalCenter",verification:true},
         component:() => import('../views/PersonalCenter/PersonalCenter.vue'),
       },
       {
@@ -94,7 +109,7 @@ let routers=[
         allpath:'/guide',
         name:'guide',
         icon:shallowRef(Aim),
-        meta:{title:"guide",verification:true, view:false},
+        meta:{title:"guide",verification:true},
         component:() => import('../views/Guide.vue'),
       },
 
