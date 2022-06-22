@@ -6,8 +6,8 @@ import { ElMessage } from 'element-plus'
 let routes=[
     {
       path: '/',
-      name: '/',
-      meta:{title:"HomePage"},
+      name: 'root',
+      meta:{title:"homedirectory"},
       redirect:"/homepage",
       component:() => import('../components/Layout/LayoutPage/LayoutPage.vue'),
       children:routers
@@ -35,7 +35,6 @@ const router = createRouter({
 router.beforeEach((to,from,next)=>{
   document.title=to.meta.title
   NProgress.start();
-  let power=JSON.parse(localStorage.getItem('jurisdiction'))
   if(from.path==='/lockscreen'){
     if(sessionStorage.getItem('lockscreen')==='true'){
       router.push({
@@ -47,17 +46,12 @@ router.beforeEach((to,from,next)=>{
   if(to.meta.verification){
     if(localStorage.getItem('token')){
       //判定是否有访问权限 to.meta.view===power.view
-      if(to.meta.view===false){
-        logonsuccess(from,to)
-        next()
-      }else{
-        if(power.all===true || power.view===true){
+        if(to.meta.hidden===true){
+          next({path:from.path})
+        }else{
           logonsuccess(from,to)
           next()
-        }else{
-          next(from)
         }
-      }
     }else{
         next({
           path:'/login',

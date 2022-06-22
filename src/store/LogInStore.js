@@ -4,7 +4,6 @@ import { JSEncrypt } from "jsencrypt"
 import router from '@/router';
 import { useRoute } from 'vue-router';
 import { ElMessage } from 'element-plus'
-
 export const SigninStore = defineStore('Signin', {
     state: () => {
         return {
@@ -49,7 +48,7 @@ export const SigninStore = defineStore('Signin', {
                         if(data.success=== true){
                             localStorage.setItem('token',data.result.token)
                             localStorage.setItem('user',username)
-                            localStorage.setItem('jurisdiction',JSON.stringify(data.result.jurisdiction))
+                            localStorage.setItem('jurisdiction', data.result.jurisdiction)
                             this.passwordForm.name=null;
                             this.passwordForm.password=null
                             router.push({

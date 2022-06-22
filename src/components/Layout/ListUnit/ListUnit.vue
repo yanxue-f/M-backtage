@@ -1,6 +1,5 @@
 <template>
-
-        <el-menu-item  :index="routerpath"  :router='router'  v-if='!Rchildren'>
+        <el-menu-item  :index="routerpath"  :router='router'  v-if='!Rchildren && routerhidden!==true'>
 
             <el-icon  v-if="icontitle">
                 <component  :is="icontitle"></component>
@@ -10,7 +9,7 @@
 
         </el-menu-item>
 
-        <el-sub-menu  :index="routerpath" v-else>
+        <el-sub-menu  :index="routerpath" v-else-if='Rchildren && routerhidden!==true'>
 
             <template #title>
                 <el-icon  v-if="icontitle">
@@ -21,9 +20,9 @@
 
             <template  v-for="unit in Rchildren" >
 
-                <list-unit  :router='unit'  :key="unit.id"  v-if="unit.children"></list-unit>
+                <list-unit  :router='unit'  :key="unit.id"  v-if="unit.children && unit.meta.hidden!==true"></list-unit>
 
-                <el-menu-item  :key="unit.id"  v-else  :index="unit.allpath">
+                <el-menu-item  :key="unit.id"  v-if="!unit.children && unit.meta.hidden!==true"  :index="unit.allpath">
                     <el-icon  v-if="unit.icon">
                         <component  :is="unit.icon"></component>
                     </el-icon>
@@ -43,6 +42,7 @@
     let icontitle = router.icon
     let Rchildren = router.children
     let routerpath = router.allpath
+    let routerhidden= router.meta.hidden
 </script>
 <style scoped>
     @import url('./ListUnit.css');

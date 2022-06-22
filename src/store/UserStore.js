@@ -8,17 +8,17 @@ export const userManagement = defineStore('management', {
     state:()=>{
         return {
             //当前用户
-            CurrentUser:null,
+            CurrentUser:{},
             //全部的用户列表
             userList:[],
+            //各种职业的权限
+            roleJurisdiction:{},
             //模板
             usertemplate:{},
             //全部职业
             allrole:[],
             //角色名映射
             rolename:null,
-            //全部角色的权限
-            roleJurisdiction:{},
             //添加新用户
             addnewuser:null,
 
@@ -68,8 +68,24 @@ export const userManagement = defineStore('management', {
             }
             return false
         }
+     },
+     disabledadd:(state)=>{
+        if(!state.roleJurisdiction || !state.CurrentUser.role) return true
         
-     }
+        return !state.roleJurisdiction[state.CurrentUser.role].includes('UserA')
+     },
+     disablededit:(state)=>{
+        if(!state.roleJurisdiction || !state.CurrentUser.role) return true
+        return (rowrole)=>{
+            return !(state.roleJurisdiction[state.CurrentUser.role].includes('UserC') && (state.CurrentUser.role-rowrole)<0)
+        }
+     },
+     disableddelete:(state)=>{
+        if(!state.roleJurisdiction || !state.CurrentUser.role) return true
+        return (rowrole)=>{
+            return !(state.roleJurisdiction[state.CurrentUser.role].includes('UserD') && (state.CurrentUser.role-rowrole)<0)
+        }
+     },
     },
     actions: {
         //获取用户列表及模板
@@ -150,8 +166,6 @@ export const userManagement = defineStore('management', {
                         this.CurrentUser=this.userList.filter((item)=>{
                             return item.username===this.usertemplate.username
                         })[0]
-                        localStorage.removeItem('jurisdiction')
-                        localStorage.setItem('jurisdiction',JSON.stringify(this.roleJurisdiction[this.CurrentUser.role]))
                     }
                     this.usertemplate=templateold
                     this.getcurrentpage()

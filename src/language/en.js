@@ -14,7 +14,11 @@ let en={
         PersonalCenter:'Personal Center',
         PersonalSettings:'Personal Settings',
         Logout:'Log out',
-        menumanagement:'Menu Manage'
+        menumanagement:'Menu Manage',
+        add:'Add',
+        delete:'Delete',
+        change:'Modify',
+        view:'View',
     },
     guides:{
         guide:'Guide',
@@ -41,7 +45,7 @@ let en={
     userRole:{
         Role:'Role',
         Name:'User Name',
-        Jurisdiction:'Authority',
+        Jurisdiction:'Authority grade',
         All:'All',
         Manageall:'Manage-all',
         View:'View',

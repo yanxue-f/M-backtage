@@ -153,7 +153,6 @@
 
       // 自定义上传视频
       async customUpload(file, insertFn) {
-        console.log(123);
           // file 即选中的文件
           // 自己实现上传，并得到视频 url
           // 最后插入视频

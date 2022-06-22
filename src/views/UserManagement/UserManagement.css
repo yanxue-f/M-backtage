@@ -9,12 +9,6 @@
     height: 100%;
     padding: 24px;
 }
-.jurisdiction-true{
-    color: green;
-}
-.jurisdiction-false{
-    color: red;
-}
 .pagination-container{
     margin-top: 24px;
     display: flex;

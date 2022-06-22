@@ -46,7 +46,6 @@
     let language = inject('language')
     let changelanguage = inject('changelanguage')
     //获取用户名
-    let userpower = JSON.parse(localStorage.getItem('jurisdiction'))
     let currentusername = localStorage.getItem('user')
     let info = ref({
         name:null,

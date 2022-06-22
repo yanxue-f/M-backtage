@@ -83,7 +83,6 @@
     import { SwitchButton , FullScreen , EditPen , Lock  , Star} from '@element-plus/icons-vue'
     import axios from "@/ToolPackage/axiosp";
     //获取用户名
-    let userpower = JSON.parse(localStorage.getItem('jurisdiction'))
     let currentusername = localStorage.getItem('user')
     let Userinfos = ref({})
     //用户获取头像和昵称

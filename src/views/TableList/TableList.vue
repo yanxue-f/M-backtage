@@ -71,7 +71,7 @@
                             {{language.querytable.querytable}}
                         </div>
                         <div class="tableList-show-header-operation">
-                            <el-button type="primary" @click="opennewlybuild=true" v-if="Editpermissions">
+                            <el-button type="primary" @click="opennewlybuild=true" >
                                 {{language.querytable.new}}<el-icon class="el-icon--right"><Plus /></el-icon>
                             </el-button>
                             
@@ -286,8 +286,7 @@ import { storeToRefs } from 'pinia'
 
 // 国际化
 let language=inject('language')
-//获取当前用户及权限
-let userpower=JSON.parse(localStorage.getItem('jurisdiction'))
+//获取当前用户
 let currentusername=localStorage.getItem('user')
 
 
@@ -372,7 +371,7 @@ function Confirmnew(){
 }
 
 
-let Editpermissions=JSON.parse(localStorage.getItem('jurisdiction')).edit
+
 //表格密度
 let Tabledensity=ref('large')
 //打开表格列设置

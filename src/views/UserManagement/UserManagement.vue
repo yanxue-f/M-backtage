@@ -19,65 +19,11 @@
 
                 <el-table-column :label="language.userRole.Jurisdiction">
 
-                    <el-table-column :label="language.userRole.All"  min-width="80">
-
                         <template #default="scope">
 
-                            <el-icon class="jurisdiction-true" v-if="roleJurisdiction[scope.row.role].all"><Select /></el-icon>
-
-                            <el-icon class="jurisdiction-false" v-else><CloseBold /></el-icon>
+                            <div>{{scope.row.role}}</div>
 
                         </template>
-
-                    </el-table-column>
-
-                    <el-table-column :label="language.userRole.Manageall"  min-width="80">
-
-                        <template #default="scope">
-
-                            <el-icon class="jurisdiction-true" v-if="roleJurisdiction[scope.row.role].manageall"><Select /></el-icon>
-
-                            <el-icon class="jurisdiction-false" v-else><CloseBold /></el-icon>
-
-                        </template>
-
-                    </el-table-column>
-
-                    <el-table-column :label="language.userRole.View" min-width="80">
-
-                        <template #default="scope">
-
-                            <el-icon class="jurisdiction-true" v-if="roleJurisdiction[scope.row.role].view"><Select /></el-icon>
-
-                            <el-icon class="jurisdiction-false" v-else><CloseBold /></el-icon>
-
-                        </template>
-
-                    </el-table-column>
-
-                    <el-table-column :label="language.userRole.Edit"  min-width="80">
-
-                        <template #default="scope">
-
-                            <el-icon class="jurisdiction-true" v-if="roleJurisdiction[scope.row.role].edit"><Select /></el-icon>
-
-                            <el-icon class="jurisdiction-false" v-else><CloseBold /></el-icon>
-
-                        </template>
-
-                    </el-table-column>
-                
-                    <el-table-column :label="language.userRole.Delete" min-width="80">
-
-                        <template #default="scope">
-
-                            <el-icon class="jurisdiction-true" v-if="roleJurisdiction[scope.row.role].delete"><Select /></el-icon>
-
-                            <el-icon class="jurisdiction-false" v-else><CloseBold /></el-icon>
-
-                        </template>
-
-                    </el-table-column>
 
                 </el-table-column>
 
@@ -87,7 +33,7 @@
 
                         <div>{{language.userRole.operation}}</div>
 
-                        <el-button type="primary" size="small" @click="openadduser = true">
+                        <el-button type="primary" size="small" @click="openadduser = true" :disabled="management.disableadd">
 
                             {{language.useroperation.adduser}}<el-icon class="el-icon--right"><Plus /></el-icon>
 
@@ -97,9 +43,9 @@
 
                     <template #default="scope">
 
-                        <el-button size="small" type="primary" @click="handleEdit(scope.row.username)" :disabled="!(roleJurisdiction[CurrentUser.role].edit && (CurrentUser.role-scope.row.role)<0 || roleJurisdiction[CurrentUser.role].all) ">{{language.operation.edit}}</el-button>
+                        <el-button size="small" type="primary" @click="handleEdit(scope.row.username)" :disabled="management.disablededit(scope.row.role)" >{{language.operation.edit}}</el-button>
                         
-                        <el-button size="small" type="danger" @click="handleDelete(scope.row.username)" :disabled="!(roleJurisdiction[CurrentUser.role].delete && (CurrentUser.role-scope.row.role)<0 || roleJurisdiction[CurrentUser.role].all)">{{language.operation.delete}}</el-button>
+                        <el-button size="small" type="danger" @click="handleDelete(scope.row.username)" :disabled="management.disableddelete(scope.row.role)" >{{language.operation.delete}}</el-button>
                     
                     </template>
                 
@@ -140,7 +86,7 @@
 
                         <el-select v-model="usertemplate.role" placeholder="Role" >
 
-                            <el-option v-for="role in allrole" :key="role.id" :label="rolename.get(role)" :value="role" :disabled="(CurrentUser.role-role)>=0"/>
+                            <el-option v-for="role in allrole" :key="role.id" :label="rolename.get(role)" :value="role" :disabled="!((CurrentUser.role-role)<0)"/>
 
                         </el-select>
 
@@ -154,7 +100,7 @@
 
                         <el-button  @click="userreturn">{{language.operation.cancel}}</el-button>
 
-                        <el-button type="primary" @click="useradd" :disabled="!complyrules">{{language.operation.confirm}}</el-button>
+                        <el-button type="primary" @click="useradd" :disabled="!complyrules" >{{language.operation.confirm}}</el-button>
 
                     </div>
 
@@ -183,7 +129,7 @@
 
                         <el-select v-model="usertemplate.role" placeholder="Role" >
 
-                            <el-option v-for="role in allrole" :key="role.id" :label="rolename.get(role)" :value="role" :disabled="!((CurrentUser.role-role)<0 || (CurrentUser.role-role)==0 && CurrentUser.username===usertemplate.username)"/>
+                            <el-option v-for="role in allrole" :key="role.id" :label="rolename.get(role)" :value="role" :disabled="!((CurrentUser.role-role)<0)" />
                         
                         </el-select>
 
@@ -260,7 +206,6 @@
     import axios from "@/ToolPackage/axiosp";
     import { ElMessage } from 'element-plus'
 
-    let userpower=JSON.parse(localStorage.getItem('jurisdiction'))
     let currentusername=localStorage.getItem('user')
     // console.log(userpower,currentusername);
     // 国际化
@@ -283,11 +228,12 @@
             pagesize.value=sessionStorage.getItem("pagesize")-0
             sessionStorage.removeItem("pagesize")
         }
+        
     })
 
     /** 所有用户的信息：userList
-     * 全职业权限 ：roleJurisdiction
      * 全部职业等级 ：allrole
+     * 全部职业权限 ：roleJurisdiction
      * 角色名映射 ：rolename
      * 当前用户信息 ：CurrentUser
      * 用户的属性面板模板 ：usertemplate
@@ -296,8 +242,7 @@
      * 数据是否修改
      * @management
      */
-    let {userList,roleJurisdiction,allrole,rolename,CurrentUser,usertemplate,addnewuser,complyrules,changeinfo} = storeToRefs(management)
-
+    let {userList,allrole,roleJurisdiction,rolename,CurrentUser,usertemplate,addnewuser,complyrules,changeinfo} = storeToRefs(management)
     /**获取分页所需要的信息
      * 信息总 ：total
      * 当前页 ：currentpage
@@ -408,7 +353,6 @@
     //编辑
     async function handleEdit(info){
         let newinfo=await axios.get(`/useList/${info}`)
-        console.log(CurrentUser.value.username);
         oldname.value=info
         openEdit.value=true
         usertemplate.value=newinfo.data.currentuser
@@ -417,7 +361,6 @@
     async function handleDelete(info){
         opendelete.value=true
         let newinfo=await axios.get(`/useList/${info}`)
-        console.log(newinfo.data.currentuser);
         usertemplate.value=newinfo.data.currentuser
     }
 

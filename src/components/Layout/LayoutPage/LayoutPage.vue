@@ -26,7 +26,6 @@
   onUpdated(()=>{
     loading.value = false
   })
-
   //引导页
   let roots=ref(null)
   import  intro  from "@/components/intro/newintro.js";
@@ -50,8 +49,9 @@
    * 当前页的面包屑
    * 当前左侧aside是否存在
    * 左侧隐藏菜单
+   * 锁屏事件
    */
-  let { nowrouter , iscollapse , nowcrumbsarr , hiddenmenu , showmenu } = storeToRefs(nowinfo)
+  let { nowrouter , iscollapse , nowcrumbsarr , hiddenmenu , showmenu ,LockScreen} = storeToRefs(nowinfo)
   //初始化
   let initial = nowinfo.initial
   //设备名称 js媒体查询
@@ -113,7 +113,7 @@
         router.push({
                 path:'/lockscreen'
             })
-      }, 30 * 60 * 1000)//这里测试就只10s，没有任何操作就跳转到login.html，你要2分钟就是2*60*1000
+      }, LockScreen.value)//这里测试就只10s，没有任何操作就跳转到login.html，你要2分钟就是2*60*1000
   }
   document.onmousedown = document.onmousemove = function () { clearTimeout(timer); startTimer(); }
 </script>
